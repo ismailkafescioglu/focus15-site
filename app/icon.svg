@@ -1,0 +1,37 @@
+<svg width="720" height="720" viewBox="0 0 720 720" xmlns="http://www.w3.org/2000/svg">
+  <!-- Matches the real focus15.co.uk favicon as closely as achievable
+       without its original source file — checked (2026-09-11): nothing
+       in Desktop/Focus15/Logo matches (all magnifying-glass variants, a
+       different mark), and the "original" on the live WordPress site
+       (favicon-round.png, 206x208) is the same crop/detail as the small
+       favicon, not a higher-fidelity master. So this is redrawn from the
+       live PNG's actual pixels, not traced from a vector source.
+       "15" in the site's real red (#C8102E, the same red used as the
+       "red" custom property in globals.css), inside a red-outline-only
+       circle, transparent background.
+       Sizing: first pass matched the real PNG's proportions exactly
+       (measured from its pixels) but that made "15" crowd the ring —
+       fine at 192px, muddy at actual favicon size (16-32px, tested
+       directly by rendering both at that size and comparing). Backed off
+       text size and added letter-spacing so the digits stay legible
+       small, prioritizing small-size clarity over exact proportion
+       matching, since a favicon is never seen any other size.
+       Typeface: "Arial Black" specifically (not font-weight:900 on
+       plain Arial, a synthetic bold) — its "1" has the right kind of
+       bold flag at the top, closer to the real digit shapes than
+       synthetic bold Arial gave. Exact original typeface unknown; if
+       Ismail finds the real source file this should be redone from it
+       directly rather than refined further by eye. -->
+  <circle cx="360" cy="360" r="320" fill="none" stroke="#C8102E" stroke-width="56" />
+  <text
+    x="360"
+    y="360"
+    dominant-baseline="central"
+    text-anchor="middle"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-weight="900"
+    font-size="390"
+    letter-spacing="12"
+    fill="#C8102E"
+  >15</text>
+</svg>
