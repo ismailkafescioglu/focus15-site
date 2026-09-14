@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 const DESCRIPTION =
   "Free videos for founders — writing a business plan, pricing, marketing strategy, company formation, SEIS/EIS, procurement, and more.";
@@ -324,6 +325,11 @@ function VideoCard({ video }: { video: Video }) {
 }
 
 export default function VideoLibrary() {
+  // Hidden for now — the videos aren't good enough yet, may come back
+  // later. Everything below is left fully intact; remove this one line
+  // (and the nav-links.ts / sitemap.ts entries) to bring the page back.
+  notFound();
+
   return (
     <main>
       <script
