@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import Reveal from "@/app/components/Reveal";
+import CleanHashOnLoad from "@/app/components/CleanHashOnLoad";
 
 // Layout.tsx's default metadata already covers this (same title/description),
 // but an explicit export here adds the canonical URL and per-page Open
@@ -722,6 +723,7 @@ function ProductSection({ product, isFirst }: { product: Product; isFirst: boole
 export default function Home() {
   return (
     <main>
+      <CleanHashOnLoad />
       {/* Hero — headline, subline, and the four stacked lines are specified
           exactly (size ordering, weights, pairing). Red is reserved for the
           ampersand and "grow" — a single emphasis word in the subline —
