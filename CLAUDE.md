@@ -13,11 +13,13 @@ open or edit anything under `../bizplan-app` from this project.
   Do. There is deliberately no separate violet/blue meaning-system anymore
   (that was an earlier draft direction, superseded by Ismail's call to reuse
   the original site's colors) — don't reintroduce one.
-- **Logo**: `app/icon.svg` (magnifying-glass mark only, used as the site
-  favicon) and `public/focus15-logo.svg` (full lockup with the "CLARITY ·
-  SPEED · IMPACT" tagline, used in the footer) are both real vector files
-  copied from `~/Desktop/Focus15/Logo/` — don't regenerate or upscale them,
-  they're already full-resolution vectors.
+- **Logo**: `app/icon.png` / `app/apple-icon.png` (favicon) are the real
+  favicon-round PNGs pulled directly from the live WordPress install before
+  cutover — not redrawn. `public/focus15-logo.svg` (full lockup with the
+  "CLARITY · SPEED · IMPACT" tagline, used in header/footer) is the real
+  vector file copied from `~/Desktop/Focus15/Logo/`. `app/opengraph-image.tsx`
+  embeds this same SVG (don't hand-draw a text approximation of it again —
+  that was tried once and looked wrong, see git history 2026-09-14).
 - **Local authority work is not a separate service.** It's the same founder
   support, reached through a council instead of sold direct. Don't write or
   restructure copy that implies Focus15 is two different businesses.
@@ -31,6 +33,23 @@ open or edit anything under `../bizplan-app` from this project.
 - Nav/footer page list lives in one place: `app/components/nav-links.ts`.
   Adding or removing a page should update that file, not just a `<Link>`
   somewhere.
+- **Sibling products' logos on this site (Stratups' square, Growth Match's
+  seal) are original designs commissioned by Ismail, not reproductions.**
+  Stratups' and Growth Match's own live sites are the ones behind, not the
+  source of truth — don't "fix" these to match stratups.com/growth-match.com
+  if they look different; that was tried once and reverted (2026-09-14).
+  4W1N's logo (`public/4win-logo.png`) is a real asset from 4win.co.uk and
+  *is* meant to match exactly.
+- **Video Library is hidden, not deleted** (`app/video-library/page.tsx`
+  starts with an unconditional `notFound()`, removed from `nav-links.ts`
+  and `sitemap.ts`) — the videos weren't good enough yet per Ismail
+  (2026-09-14). To bring it back: delete the `notFound()` call and add the
+  entries back in those two files. All video data/layout code is untouched.
+- A stray `#hash` from the homepage's jump-to-section links (`#stratups`,
+  `#4w1n`, `#growth-match`) used to stick in the address bar and make
+  refresh land back on that section — fixed by
+  `app/components/CleanHashOnLoad.tsx`, which strips it shortly after it
+  appears without touching scroll position. Don't remove it.
 
 ## Keeping this file useful
 
