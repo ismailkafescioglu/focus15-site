@@ -48,7 +48,7 @@ const DELIVERABLES = [
 // one undifferentiated block.
 const WORKSHOP_CATEGORIES = [
   {
-    name: "Foundations & Finance",
+    name: "Foundations",
     topics: [
       "Building a Business Plan",
       "Building Your Financial Plan",
@@ -58,8 +58,17 @@ const WORKSHOP_CATEGORIES = [
     ],
   },
   {
-    name: "Brand & Growth",
-    topics: ["Marketing Strategy", "Social Media", "Branding", "Routes to Market", "The Art of Selling"],
+    name: "Brand & Marketing",
+    topics: [
+      "Marketing Strategy",
+      "Social Media",
+      "Branding",
+      "Routes to Market",
+      "The Art of Selling",
+      // Customer-facing, like the rest of this group — not really a
+      // "scaling" concern, which is why it moved out of that category.
+      "A Winning Front End Website",
+    ],
   },
   {
     name: "Operations & Team",
@@ -74,7 +83,6 @@ const WORKSHOP_CATEGORIES = [
   {
     name: "Scaling & Resilience",
     topics: [
-      "A Winning Front End Website",
       "Building Scalable Tech",
       "Scaling Your Business",
       "Cybersecurity Essentials",
