@@ -41,12 +41,46 @@ const DELIVERABLES = [
   },
 ];
 
-const WORKSHOP_TOPICS = [
-  { name: "Marketing Strategy", body: "Planning what to prioritise first, from a standing start." },
-  { name: "Social Media", body: "Building a presence that reaches real customers, not just followers." },
-  { name: "Branding", body: "Naming, positioning, and a visual identity customers recognize." },
-  { name: "Operations", body: "Making sure delivery, process, and capacity can keep up as you grow." },
-  { name: "Routes to Market", body: "Which channels actually get your product in front of customers." },
+// Real topic titles, chosen by Ismail (2026-09-14) from Focus15's own
+// workshop bank. Grouped into four categories purely for scannability —
+// the grouping itself is a design choice, not something the source
+// material specifies — so a flat 20-item list stays readable rather than
+// one undifferentiated block.
+const WORKSHOP_CATEGORIES = [
+  {
+    name: "Foundations & Finance",
+    topics: [
+      "Building a Business Plan",
+      "Building Your Financial Plan",
+      "Company Formation",
+      "Raising Finance",
+      "Legal Basics",
+    ],
+  },
+  {
+    name: "Brand & Growth",
+    topics: ["Marketing Strategy", "Social Media", "Branding", "Routes to Market", "The Art of Selling"],
+  },
+  {
+    name: "Operations & Team",
+    topics: [
+      "Operations",
+      "Why Supply Chain Matters",
+      "The Art of Procurement",
+      "Building the Right Team",
+      "Leadership and Culture",
+    ],
+  },
+  {
+    name: "Scaling & Resilience",
+    topics: [
+      "A Winning Front End Website",
+      "Building Scalable Tech",
+      "Scaling Your Business",
+      "Cybersecurity Essentials",
+      "Net Zero Transition for Small Firms",
+    ],
+  },
 ];
 
 export default function LocalAuthorities() {
@@ -138,19 +172,32 @@ export default function LocalAuthorities() {
             founders get a clear calendar, not something improvised on the
             day.
           </p>
-          <div className="workshop-topics-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12 }}>
-            {WORKSHOP_TOPICS.map((w) => (
-              <div
-                key={w.name}
-                style={{
-                  background: "#ffffff",
-                  border: "1px solid var(--border)",
-                  borderRadius: 8,
-                  padding: 16,
-                }}
-              >
-                <div style={{ fontWeight: 700, fontSize: "0.95rem" }}>{w.name}</div>
-                <p style={{ marginTop: 6, fontSize: "0.85rem" }}>{w.body}</p>
+          <div
+            className="workshop-categories-grid"
+            style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 28 }}
+          >
+            {WORKSHOP_CATEGORIES.map((cat) => (
+              <div key={cat.name}>
+                <div
+                  style={{
+                    fontSize: "0.75rem",
+                    fontWeight: 700,
+                    color: "var(--ink-faint)",
+                    letterSpacing: "0.04em",
+                    textTransform: "uppercase",
+                    marginBottom: 12,
+                  }}
+                >
+                  {cat.name}
+                </div>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 9 }}>
+                  {cat.topics.map((topic) => (
+                    <li key={topic} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                      <span style={{ color: "var(--navy)", fontWeight: 800, flexShrink: 0 }}>✓</span>
+                      <span style={{ fontSize: "0.9rem" }}>{topic}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
@@ -197,11 +244,11 @@ export default function LocalAuthorities() {
           .stats-grid { grid-template-columns: 1fr 1fr !important; }
           .deliverables-grid { grid-template-columns: 1fr !important; }
         }
-        @media (max-width: 900px) {
-          .workshop-topics-grid { grid-template-columns: repeat(3, 1fr) !important; }
+        @media (max-width: 700px) {
+          .workshop-categories-grid { grid-template-columns: 1fr 1fr !important; }
         }
-        @media (max-width: 620px) {
-          .workshop-topics-grid { grid-template-columns: 1fr 1fr !important; }
+        @media (max-width: 460px) {
+          .workshop-categories-grid { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 480px) {
           .stats-grid { grid-template-columns: 1fr !important; }
