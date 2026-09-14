@@ -33,7 +33,10 @@ export async function POST(req: Request) {
   const resend = new Resend(apiKey);
 
   const { error } = await resend.emails.send({
-    from: "Focus15 site <onboarding@resend.dev>",
+    // focus15.co.uk is verified in Resend, so we can send from our own
+    // domain (and to any recipient) instead of the shared onboarding@resend.dev
+    // sandbox address, which only allowed sending back to the account owner.
+    from: "Focus15 site <no-reply@focus15.co.uk>",
     to: toEmail,
     replyTo: email,
     subject: `New contact form message from ${name}`,
