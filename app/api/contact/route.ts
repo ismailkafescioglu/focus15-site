@@ -41,6 +41,9 @@ export async function POST(req: Request) {
   });
 
   if (error) {
+    // Logged server-side (visible in Vercel's Runtime Logs) rather than
+    // returned to the client, so the public API doesn't leak internal detail.
+    console.error("Resend send failed:", error);
     return NextResponse.json({ error: "Failed to send" }, { status: 502 });
   }
 
