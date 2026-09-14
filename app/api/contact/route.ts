@@ -6,7 +6,15 @@ import { NextResponse } from "next/server";
 // fails loudly instead of silently swallowing messages, and the contact
 // page's mailto link keeps working as a fallback either way.
 export async function POST(req: Request) {
-  const { name, email, message } = await req.json();
+  const { name, email, message, company } = await req.json();
+
+  // Honeypot: a field real visitors never see or fill in (see
+  // ContactForm.tsx). A bot that fills every field it finds trips this —
+  // pretend success rather than erroring, so it has nothing to adapt
+  // against, and don't spend a Resend send on it.
+  if (typeof company === "string" && company.trim()) {
+    return NextResponse.json({ ok: true });
+  }
 
   if (
     typeof name !== "string" ||

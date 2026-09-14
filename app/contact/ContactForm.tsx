@@ -19,6 +19,8 @@ export default function ContactForm() {
           name: form.get("name"),
           email: form.get("email"),
           message: form.get("message"),
+          // Honeypot — see the field below and route.ts for what this is.
+          company: form.get("company"),
         }),
       });
       if (!res.ok) throw new Error("failed");
@@ -31,6 +33,20 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} style={{ display: "grid", gap: 16 }}>
+      {/* Honeypot — invisible to real visitors (off-screen, unreachable by
+          keyboard, hidden from screen readers), but bots that blindly fill
+          every field on a form fill this one too. route.ts silently
+          pretends to succeed whenever it's non-empty, rather than erroring,
+          so a bot has no signal to adapt against. Added 2026-09-14 after
+          the first wave of spam submissions. */}
+      <input
+        type="text"
+        name="company"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+      />
       <label style={{ display: "grid", gap: 6 }}>
         <span style={{ fontSize: "0.9rem", fontWeight: 600 }}>Name</span>
         <input
